@@ -1,0 +1,26 @@
+services:
+  be:
+    build: ./LIDM-BE
+    ports:
+      - "8000:80"
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: sqlite
+
+  fe:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - ./LIDM-FE:/app
+      - fe_node_modules:/app/node_modules
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
+    ports:
+      - "5173:5173"
+    depends_on:
+      - be
+
+volumes:
+  fe_node_modules:
+

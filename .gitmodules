@@ -1,0 +1,7 @@
+[submodule "LIDM-BE"]
+	path = LIDM-BE
+	url = git@github.com:mohamadarif03/LIDM-BE.git
+[submodule "LIDM-FE"]
+	path = LIDM-FE
+	url = git@github.com:mohamadarif03/LIDM-FE.git
+
