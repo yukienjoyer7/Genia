@@ -10,12 +10,12 @@ services:
       DB_CONNECTION: sqlite
 
   fe:
-    image: node:22-alpine
-    working_dir: /app
+    build:
+      context: ./LIDM-FE
+      target: dev
     volumes:
       - ./LIDM-FE:/app
       - fe_node_modules:/app/node_modules
-    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
     ports:
       - "5173:5173"
     depends_on:
@@ -23,4 +23,3 @@ services:
 
 volumes:
   fe_node_modules:
-
